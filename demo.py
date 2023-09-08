@@ -15,3 +15,19 @@
 # ans=Solution()
 # print(ans.minNumber(list1))
 
+# class Solustion1:
+#     def moveZeroes(self,nums:[int]) -> None:
+#         slow=0
+#         fast=0
+#
+#         while fast<len(nums):
+#             if nums[fast]!=0:
+#                 nums[slow],nums[fast]=nums[fast],nums[slow]
+#                 slow+=1
+#             fast+=1
+#
+# ans=Solustion1()
+# list1=[1,2,0,3,4]
+# list2=ans.moveZeroes(list1)
+# print(list2)
+
