@@ -67,17 +67,37 @@
 #
 #     def Sortarry(self, nums: [int]) -> [int]:
 #         return self.Maxheapsort(nums)
-
-import heapq
-
-
-class Solustion3():
-    def FindkthLargest(self, nums: [int], k: int) -> int:
-        res = []
-        for num in nums:
-            if len(nums) < k:
-                heapq.heappush(res, num)
-            elif num > res[0]:
-                heapq.heappop(res)
-                heapq.heappush(res, num)
-        return heapq.heappop(res)
+#
+# import heapq
+#
+#
+# class Solustion3():
+#     def FindkthLargest(self, nums: [int], k: int) -> int:
+#         res = []
+#         for num in nums:
+#             if len(nums) < k:
+#                 heapq.heappush(res, num)
+#             elif num > res[0]:
+#                 heapq.heappop(res)
+#                 heapq.heappush(res, num)
+#         return heapq.heappop(res)
+#
+# class Solution4():
+#     def search(self, nums: [int], target: int) -> int:
+#         left = 0
+#         right = len(nums) - 1
+#         while left <= right:
+#             mid = (left + right) // 2
+#             if nums[mid] == target:
+#                 return mid
+#             elif nums[mid] > target:
+#                 right = mid - 1
+#             else:
+#                 left = mid + 1
+#         return -1
+#
+#
+# list3 = [-1, 0, 3, 5, 9, 12]
+# target = 9
+# ans = Solution4()
+# print(ans.search(list3, target))
