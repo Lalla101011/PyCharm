@@ -101,3 +101,87 @@
 # target = 9
 # ans = Solution4()
 # print(ans.search(list3, target))
+#
+# class Soluton5():
+#     def searchRange(self, nums: [int], target: int) -> [int]:
+#         ans = [-1, -1]
+#         n = len(nums)
+#         if n == 0:
+#             return ans
+#
+#         left = 0
+#         right = n - 1
+#         while left < right:
+#             mid = left + (left + right) // 2
+#             if nums[mid] < target:
+#                 left = mid + 1
+#             else:
+#                 right = mid
+#         if nums[left] != target:
+#             return ans
+#
+#         ans[0] = left
+#
+#         left = 0
+#         right = n - 1
+#         while left < right:
+#             mid = left + (right - left + 1) // 2
+#             if nums[mid] > target:
+#                 right = mid - 1
+#             else:
+#                 left = mid
+#
+#         if nums[mid] == target:
+#             ans[1] = left
+#
+#         return ans
+#
+# class Solution6():
+#     def sortColors(self,nums:[int])->None:
+#         left=0
+#         right=len(nums)-1
+#         index=0
+#         while left<=right:
+#             if index<left:
+#                 index+=1
+#             elif nums[index]==0:
+#                 nums[index] , nums[left]=nums[left],nums[index]
+#                 left+=1
+#             elif nums[index]==2:
+#                 nums[index],nums[right]=nums[right],nums[index]
+#             else:
+#                 index+=1
+#
+#
+# class Solution7():
+#     def insertsort(self, nums: [int]):
+#         for i in range(1, len(nums)):
+#             temp = nums[i]
+#             j = i
+#             while j > 0 and nums[j - 1] > temp:
+#                 nums[j] = nums[j - 1]
+#                 j -= 1
+#             nums[j] = temp
+#         return nums
+#
+#     def sortarry(self, nums: [int]) -> [int]:
+#         return self.insertsort(nums)
+#
+# class Solution8():
+#     def bubble(self, nums):
+#
+#         for i in range(len(nums) - 1):
+#
+#             for j in range(len(nums) - i - 1):
+#
+#                 if nums[j] > nums[j + 1]:
+#                     nums[j], nums[j + 1] = nums[j + 1], nums[j]
+#         return nums
+#
+#     def sortarry(self, nums: [int]) -> [int]:
+#         return self.bubble(nums)
+#
+#
+# ans = Solution8()
+# list = [6, 2, 3, 5, 1, 4]
+# print(ans.sortarry(list))
