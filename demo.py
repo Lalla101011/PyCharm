@@ -185,3 +185,142 @@
 # ans = Solution8()
 # list = [6, 2, 3, 5, 1, 4]
 # print(ans.sortarry(list))
+#
+# class Solution9():
+#     def selectsort(self, arr):
+#         for i in range(len(arr) - 1):
+#             min_i = i
+#             for j in range(i + 1, len(arr)):
+#                 if arr[j] < arr[min_i]:
+#                     min_i = j
+#             if i != min_i:
+#                 arr[i], arr[min_i] = arr[min_i], arr[i]
+#         return arr
+#
+#     def sortArry(self, nums: [int]) -> [int]:
+#         return self.selectsort(nums)
+#
+#
+# ans = Solution9()
+# list = [6, 2, 3, 5, 1, 4]
+# print(ans.sortArry(list))
+#
+# class Solution9():
+#     def shellsort(self, arr):
+#         size = len(arr)
+#         gap = size // 2
+#
+#         while gap > 0:
+#             for i in range(gap, size):
+#                 temp = arr[i]
+#                 j = i
+#
+#                 while j >= gap and arr[j - gap] > temp:
+#                     arr[j] = arr[j - gap]
+#                     j -= gap
+#
+#                 arr[j] = temp
+#             gap = gap // 2
+#         return arr
+#
+#     def sortArry(self, nums: [int]) -> [int]:
+#         return self.shellsort(nums)
+#
+#
+# ans = Solution9()
+# list = [7, 2, 6, 8, 0, 4, 1, 5, 9, 3]
+# print(ans.sortArry(list))
+#
+# class Solution10:
+#     def merge(self, left_arr, right_arr):
+#         arr = []
+#         left_i = 0
+#         right_i = 0
+#         while left_i < len(left_arr) and right_i < len(right_arr):
+#             if left_arr[left_i] < right_arr[right_i]:
+#                 arr.append(left_arr[left_i])
+#                 left_i += 1
+#             else:
+#                 arr.append(right_arr[right_i])
+#                 right_i += 1
+#
+#         while left_i < len(left_arr):
+#             arr.append(left_arr[left_i])
+#             left_i += 1
+#
+#         while right_i < len(right_arr):
+#             arr.append(right_arr[right_i])
+#             right_i += 1
+#         return arr
+#
+#     def mergeSort(self, arr):
+#         if len(arr) <= 1:
+#             return arr
+#         mid = len(arr) // 2
+#         left_arr = self.mergeSort(arr[0:mid])
+#         right_arr = self.mergeSort(arr[mid:])
+#         return self.merge(left_arr, right_arr)
+#
+#     def sortArry(self, nums: [int]) -> [int]:
+#         return self.mergeSort(nums)
+#
+#
+# list = [6, 2, 1, 3, 7, 5, 4, 8]
+# ans = Solution10()
+# print(ans.sortArry(list))
+#
+# import random
+# class Solution11:
+#     def randomPartition(self, arr: [int], low: int, high: int):
+#         i = random.randint(low, high)
+#         arr[i], arr[low] = arr[low], arr[i]
+#         return self.partiton(arr, low, high)
+#
+#     def partition(self, arr: [int], low: int, high: int):
+#         pivot = arr[low]
+#         i = low + 1
+#
+#         for j in range(i, high + 1):
+#             if pivot > arr[j]:
+#                 arr[j], arr[i] = arr[i], arr[j]
+#                 i += 1
+#         arr[i - 1], arr[low] = arr[low], arr[i - 1]
+#         return i - 1
+#
+#     def quickSort(self, arr, low, high):
+#         if low < high:
+#             pi = self.randomPartition(arr, low, high)
+#             self.quickSort(arr, low, pi - 1)
+#             self.quickSort(arr, pi + 1, high)
+#
+#         return arr
+#
+#     def sortArry(self, nums: [int]) -> [int]:
+#         return self.quickSort(nums, 0, len(nums) - 1)
+
+# class Solution12:
+#     def twoSum(self, nums: [int], target: int) -> [int]:
+#         for i in range(len(nums)):
+#             left, right = i + 1, len(nums) - 1
+#             while left < right:
+#                 mid = left + (right - left) // 2
+#                 if nums[i] + nums[mid] > target:
+#                     right = mid
+#                 else:
+#                     left = mid + 1
+#             if nums[left] + nums[i] == target:
+#                 return [i + 1, left + 1]
+#         return [-1, -1]
+
+# class Solution13:
+#     def twoSum(self, nums: [int], target: int) -> [int]:
+#         left = 0
+#         right = len(nums) - 1
+#         while left < right:
+#             if nums[left] + nums[right] == target:
+#                 return [left + 1, right + 1]
+#             elif nums[left] + nums[right] > target:
+#                 right -= 1
+#             else:
+#                 left += 1
+#         return [-1, -1]
