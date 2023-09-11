@@ -324,3 +324,285 @@
 #             else:
 #                 left += 1
 #         return [-1, -1]
+
+# class Solution14:
+#     def findMin(self,nums:[int])->int:
+#         left=0
+#         right=len(nums)
+#         while left<right:
+#             mid=left+(right-left)//2
+#             if nums[mid]>nums[right]:
+#                 left=right+1
+#             else:
+#                 right=mid
+#         return nums[left]
+#
+
+# class Solution15:
+#     def findMin(self, nums: [int]) -> int:
+#         left = 0
+#         right = len(nums)
+#         while left < right:
+#             mid = left + (right - left) // 2
+#             if nums[mid] > nums[right]:
+#                 left = mid + 1
+#             elif nums[mid] < nums[right]:
+#                 right = mid
+#             else:
+#                 right = right - 1
+#         return nums[left]
+
+# class Soluthion16:
+#     def isPalindrome(self,s:str)->bool:
+#         left=0
+#         right=len(s)
+#         while left<right:
+#             if s[left].isalnum():
+#                 left+=1
+#                 continue
+#             if s[right].isalnum():
+#                 right+=1
+#                 continue
+#             if s[left].lower()==s[right].lower():
+#                 left+=1
+#                 right-=1
+#             else:
+#                 return  False
+#         return True
+
+# class Solution17:
+#     def maxArea(self, height: [int]) -> int:
+#         left = 0
+#         right = len(height) - 1
+#         ans = 0
+#         while left < right:
+#             area = min(height[left], height[right]) * (right - left)
+#             ans = max(ans, area)
+#             if height[left] < height[right]:
+#                 left += 1
+#             else:
+#                 right -= 1
+#         return ans
+
+# class Solution18:
+#     #快慢指针
+#     def removeDuplicates(self, nums: [int]) -> int:
+#         if len(nums) <= 1:
+#             return nums
+#
+#         slow, fast = 0, 1
+#
+#         while (fast < len(nums)):
+#             if nums[slow] != nums[fast]:
+#                 slow += 1
+#                 nums[slow] = nums[fast]
+#             fast += 1
+#         return slow + 1
+
+# class Solution19:
+#     def insertsection(self,nums1:[int],nums2:[int])->[int]:
+#         nums1.sort()
+#         nums2.sort()
+#
+#         left_1=0
+#         left_2=0
+#         res=[]
+#         while left_1<len(nums1) and left_2<len(nums2):
+#             if nums1[left_1]==nums2[left_2]:
+#                 if nums1[left_1] not in res:
+#                     res.append(nums1[left_1])
+#                     left_1+=1
+#                     left_2+=2
+#             elif nums1[left_1]<nums2[left_2]:
+#                 left_1+=1
+#             elif nums1[left_1]>nums2[left_2]:
+#                 left_2+=1
+#         return res
+
+# class Solution20:
+#     def reverseSring(self, s: [str]) -> [str]:
+#         left, right = 0, len(s) - 1
+#         while left < right:
+#             s[left], s[right] = s[right], s[left]
+#             left += 1
+#             right += 1
+
+# class Solution21:
+#     def reverseVowels(self, s: str) -> str:
+#         vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+#         left = 0
+#         right = len(s) - 1
+#         s_list = list(s)
+#         while left < right:
+#             if s_list[left] not in vowels:
+#                 left += 1
+#                 continue
+#             if s_list[right] not in vowels:
+#                 right += 1
+#                 continue
+#             s_list[left], s_list[right] = s_list[right], s_list[left]
+#             left += 1
+#             right += 1
+#         return ''.join(s_list)
+
+# class Solution22:
+#     def triangleNember(self, nums: [int]) -> int:
+#         nums.sort()
+#         size = len(nums)
+#         ans = 0
+#
+#         for i in range(2, size):
+#             left = 0
+#             right = i - 1
+#             while left < right:
+#                 if nums[left] + nums[right] <= nums[i]:
+#                     left += 1
+#                 else:
+#                     ans += (right - left)
+#                     right -= 1
+#         return ans
+
+# class Solution23:
+#     def numOfSubarrays(self, arr: [int], k: int, threshold: int) -> int:
+#         left = 0
+#         right = 0
+#         ans = 0
+#         window_sum = 0
+#
+#         while right < len(arr):
+#             window_sum += arr[right]
+#
+#             if right - left + 1 >= k:
+#                 if window_sum >= k * threshold:
+#                     ans += 1
+#                 window_sum -= arr[left]
+#                 left += 1
+#             right += 1
+#         return ans
+
+# class Solution24:
+#     def lengthOfLongestSubsting(self, s: str) -> int:
+#         left = 0
+#         right = 0
+#         windows = dict()
+#         ans = 0
+#
+#         while right < len(s):
+#             if s[right] not in windows:
+#                 windows[s[right]] = 1
+#             else:
+#                 windows[s[right]] += 1
+#
+#             while windows[s[right]] > 1:
+#                 windows[s[left]] -= 1
+#                 left += 1
+#
+#             ans = max(ans, right - left + 1)
+#             right += 1
+#
+#         return ans
+
+# class Solution25:
+#     def minSubArryLen(self, target: int, nums: [int]) -> int:
+#         size = len(nums)
+#         ans = size + 1
+#         left = 0
+#         right = 0
+#         window_sum = 0
+#
+#         while right < size:
+#             window_sum += nums[right]
+#
+#             while window_sum >= target:
+#                 ans = max(ans, right - left + 1)
+#                 window_sum -= nums[left]
+#                 left += 1
+#             right += 1
+#
+#         return ans if ans != size + 1 else 0
+
+# class Solution26:
+#     def numSubarrayProductLessTank(self, nums: [int], k: int) -> int:
+#         if k <= 1:
+#             return 0
+#         left = 0
+#         right = 0
+#         windows_product = 1
+#         count = 0
+#
+#         while right < len(nums):
+#             windows_product *= nums[right]
+#
+#             if windows_product >= k:
+#                 windows_product /= nums[left]
+#                 left += 1
+#
+#             count += (right - left + 1)
+#             # 这里是因为每当right右移找到了一个新的满足条件的数组，新加入的nums[right]与前面的
+#             #数的组合个数为right - left + 1,并且一定不会重复，因为nums[right]是第一次出现
+#             right += 1
+#         return count
+
+# class Solution27:
+#     def fingMaxAverage(self, nums: [int], k: int) -> float:
+#         left = 0
+#         right = 0
+#         window_total = 0
+#         ans = float('-inf')
+#         while right < len(nums):
+#             window_total += nums[right]
+#             if right - left + 1 >= k:
+#                 ans = max(window_total / k, ans)
+#                 window_total -= nums[left]
+#                 left += 1
+#             right += 1
+#
+#         return ans
+
+# class Solution28:
+#     def maxSatisfied(self, customer: [int], grumy: [int], minutes: int) -> int:
+#         left = 0
+#         right = 0
+#         window_count = 0
+#         ans = 0
+#
+#         while right < len(customer):
+#             if grumy[right] == 1:
+#                 window_count += customer[right]
+#
+#             if right - left + 1 >= minutes:
+#                 if grumy[left] == 1:
+#                     window_count -= customer[left]
+#                     left += 1
+#
+#             right += 1
+#             ans = max(ans, window_count)
+#
+#         for i in range(len(customer)):
+#             if grumy[i] == 0:
+#                 ans += customer[i]
+#
+#         return ans
+
+# class Solution29:
+#     def maxVowels(self, s: str, k: int) -> int:
+#         left = 0
+#         right = 0
+#         ans = 0
+#         window_count = 0
+#         vowels_set = ('a', 'e', 'i', 'o', 'u')
+#
+#         while right < len(s):
+#             if s[right] in vowels_set:
+#                 window_count += 1
+#
+#             if right - left + 1 >= k:
+#                 ans = max(ans, window_count)
+#                 if s[left] in vowels_set:
+#                     window_count -= 1
+#                 left -= 1
+#
+#             right += 1
+#
+#         return ans
+
